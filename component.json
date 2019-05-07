@@ -1,0 +1,152 @@
+{
+    "title": "Cloud Monitoring",
+    "description": "Accesses Google Cloud Monitoring data.",
+    "docsUrl": "https://cloud.google.com/monitoring/v2beta2/",
+    "url": "https://api.apis.guru/v2/specs/googleapis.com/cloudmonitoring/v2beta2/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://www.googleapis.com/cloudmonitoring/v2beta2/projects",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "Oauth2": {
+                "label": "Oauth 2.0 authentication",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "cloudmonitoring_metricDescriptors_list": {
+            "main": "./lib/actions/cloudmonitoring_metricDescriptors_list.js",
+            "title": "List metric descriptors that match the query. If the query is not set, then all of the metric descriptors will be returned. Large responses will be paginated, use the nextPageToken returned in the response to request subsequent pages of results by setting the pageToken query parameter to the value of the nextPageToken.",
+            "description": "List metric descriptors that match the query. If the query is not set, then all of the metric descriptors will be returned. Large responses will be paginated, use the nextPageToken returned in the response to request subsequent pages of results by setting the pageToken query parameter to the value of the nextPageToken.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/cloudmonitoring_metricDescriptors_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "cloudmonitoring_metricDescriptors_create": {
+            "main": "./lib/actions/cloudmonitoring_metricDescriptors_create.js",
+            "title": "Create a new metric.",
+            "description": "Create a new metric.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/cloudmonitoring_metricDescriptors_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "cloudmonitoring_metricDescriptors_delete": {
+            "main": "./lib/actions/cloudmonitoring_metricDescriptors_delete.js",
+            "title": "Delete an existing metric.",
+            "description": "Delete an existing metric.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/cloudmonitoring_metricDescriptors_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "cloudmonitoring_timeseries_list": {
+            "main": "./lib/actions/cloudmonitoring_timeseries_list.js",
+            "title": "List the data points of the time series that match the metric and labels values and that have data points in the interval. Large responses are paginated; use the nextPageToken returned in the response to request subsequent pages of results by setting the pageToken query parameter to the value of the nextPageToken.",
+            "description": "List the data points of the time series that match the metric and labels values and that have data points in the interval. Large responses are paginated; use the nextPageToken returned in the response to request subsequent pages of results by setting the pageToken query parameter to the value of the nextPageToken.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/cloudmonitoring_timeseries_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "cloudmonitoring_timeseries_write": {
+            "main": "./lib/actions/cloudmonitoring_timeseries_write.js",
+            "title": "Put data points to one or more time series for one or more metrics. If a time series does not exist, a new time series will be created. It is not allowed to write a time series point that is older than the existing youngest point of that time series. Points that are older than the existing youngest point of that time series will be discarded silently. Therefore, users should make sure that points of a time series are written sequentially in the order of their end time.",
+            "description": "Put data points to one or more time series for one or more metrics. If a time series does not exist, a new time series will be created. It is not allowed to write a time series point that is older than the existing youngest point of that time series. Points that are older than the existing youngest point of that time series will be discarded silently. Therefore, users should make sure that points of a time series are written sequentially in the order of their end time.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/cloudmonitoring_timeseries_write.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "cloudmonitoring_timeseriesDescriptors_list": {
+            "main": "./lib/actions/cloudmonitoring_timeseriesDescriptors_list.js",
+            "title": "List the descriptors of the time series that match the metric and labels values and that have data points in the interval. Large responses are paginated; use the nextPageToken returned in the response to request subsequent pages of results by setting the pageToken query parameter to the value of the nextPageToken.",
+            "description": "List the descriptors of the time series that match the metric and labels values and that have data points in the interval. Large responses are paginated; use the nextPageToken returned in the response to request subsequent pages of results by setting the pageToken query parameter to the value of the nextPageToken.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/cloudmonitoring_timeseriesDescriptors_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,61 @@
+{
+    "type": "object",
+    "properties": {
+        "project": {
+            "required": true,
+            "type": "string"
+        },
+        "metric": {
+            "required": true,
+            "type": "string"
+        },
+        "youngest": {
+            "required": true,
+            "type": "string"
+        },
+        "aggregator": {
+            "type": "string",
+            "enum": [
+                "max",
+                "mean",
+                "min",
+                "sum"
+            ]
+        },
+        "count": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 12000,
+            "default": 6000
+        },
+        "labels": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "oldest": {
+            "type": "string"
+        },
+        "pageToken": {
+            "type": "string"
+        },
+        "timespan": {
+            "type": "string"
+        },
+        "window": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The request of cloudmonitoring.timeseries.list",
+            "properties": {
+                "kind": {
+                    "default": "cloudmonitoring#listTimeseriesRequest",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"cloudmonitoring#listTimeseriesRequest\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

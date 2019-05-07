@@ -1,0 +1,171 @@
+{
+    "type": "object",
+    "properties": {
+        "project": {
+            "required": true,
+            "type": "string"
+        },
+        "fields": {
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The request of cloudmonitoring.timeseries.write",
+            "properties": {
+                "commonLabels": {
+                    "additionalProperties": {
+                        "description": "The label's name.",
+                        "type": "string"
+                    },
+                    "description": "The label's name.",
+                    "type": "object"
+                },
+                "timeseries": {
+                    "description": "Provide time series specific labels and the data points for each time series. The labels in timeseries and the common_labels should form a complete list of labels that required by the metric.",
+                    "items": {
+                        "description": "When writing time series, TimeseriesPoint should be used instead of Timeseries, to enforce single point for each time series in the timeseries.write request.",
+                        "properties": {
+                            "point": {
+                                "description": "The data point in this time series snapshot.",
+                                "properties": {
+                                    "boolValue": {
+                                        "description": "The value of this data point. Either \"true\" or \"false\".",
+                                        "type": "boolean"
+                                    },
+                                    "distributionValue": {
+                                        "description": "The value of this data point as a distribution. A distribution value can contain a list of buckets and/or an underflowBucket and an overflowBucket. The values of these points can be used to create a histogram.",
+                                        "properties": {
+                                            "buckets": {
+                                                "description": "The finite buckets.",
+                                                "items": {
+                                                    "description": "The histogram's bucket. Buckets that form the histogram of a distribution value. If the upper bound of a bucket, say U1, does not equal the lower bound of the next bucket, say L2, this means that there is no event in [U1, L2).",
+                                                    "properties": {
+                                                        "count": {
+                                                            "description": "The number of events whose values are in the interval defined by this bucket.",
+                                                            "format": "int64",
+                                                            "type": "string"
+                                                        },
+                                                        "lowerBound": {
+                                                            "description": "The lower bound of the value interval of this bucket (inclusive).",
+                                                            "format": "double",
+                                                            "type": "number"
+                                                        },
+                                                        "upperBound": {
+                                                            "description": "The upper bound of the value interval of this bucket (exclusive).",
+                                                            "format": "double",
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "type": "array"
+                                            },
+                                            "overflowBucket": {
+                                                "description": "The overflow bucket.",
+                                                "properties": {
+                                                    "count": {
+                                                        "description": "The number of events whose values are in the interval defined by this bucket.",
+                                                        "format": "int64",
+                                                        "type": "string"
+                                                    },
+                                                    "lowerBound": {
+                                                        "description": "The lower bound of the value interval of this bucket (inclusive).",
+                                                        "format": "double",
+                                                        "type": "number"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "underflowBucket": {
+                                                "description": "The underflow bucket.",
+                                                "properties": {
+                                                    "count": {
+                                                        "description": "The number of events whose values are in the interval defined by this bucket.",
+                                                        "format": "int64",
+                                                        "type": "string"
+                                                    },
+                                                    "upperBound": {
+                                                        "description": "The upper bound of the value interval of this bucket (exclusive).",
+                                                        "format": "double",
+                                                        "type": "number"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "doubleValue": {
+                                        "description": "The value of this data point as a double-precision floating-point number.",
+                                        "format": "double",
+                                        "type": "number"
+                                    },
+                                    "end": {
+                                        "description": "The interval [start, end] is the time period to which the point's value applies. For gauge metrics, whose values are instantaneous measurements, this interval should be empty (start should equal end). For cumulative metrics (of which deltas and rates are special cases), the interval should be non-empty. Both start and end are RFC 3339 strings.",
+                                        "format": "date-time",
+                                        "type": "string"
+                                    },
+                                    "int64Value": {
+                                        "description": "The value of this data point as a 64-bit integer.",
+                                        "format": "int64",
+                                        "type": "string"
+                                    },
+                                    "start": {
+                                        "description": "The interval [start, end] is the time period to which the point's value applies. For gauge metrics, whose values are instantaneous measurements, this interval should be empty (start should equal end). For cumulative metrics (of which deltas and rates are special cases), the interval should be non-empty. Both start and end are RFC 3339 strings.",
+                                        "format": "date-time",
+                                        "type": "string"
+                                    },
+                                    "stringValue": {
+                                        "description": "The value of this data point in string format.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "timeseriesDesc": {
+                                "description": "The descriptor of this time series.",
+                                "properties": {
+                                    "labels": {
+                                        "additionalProperties": {
+                                            "description": "The label's name.",
+                                            "type": "string"
+                                        },
+                                        "description": "The label's name.",
+                                        "type": "object"
+                                    },
+                                    "metric": {
+                                        "description": "The name of the metric.",
+                                        "type": "string"
+                                    },
+                                    "project": {
+                                        "description": "The Developers Console project number to which this time series belongs.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

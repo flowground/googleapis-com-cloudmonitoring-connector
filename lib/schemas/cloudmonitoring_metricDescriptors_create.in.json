@@ -1,0 +1,78 @@
+{
+    "type": "object",
+    "properties": {
+        "project": {
+            "required": true,
+            "type": "string"
+        },
+        "fields": {
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "A metricDescriptor defines the name, label keys, and data type of a particular metric.",
+            "properties": {
+                "description": {
+                    "description": "Description of this metric.",
+                    "type": "string"
+                },
+                "labels": {
+                    "description": "Labels defined for this metric.",
+                    "items": {
+                        "description": "A label in a metric is a description of this metric, including the key of this description (what the description is), and the value for this description.",
+                        "properties": {
+                            "description": {
+                                "description": "Label description.",
+                                "type": "string"
+                            },
+                            "key": {
+                                "description": "Label key.",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "description": "The name of this metric.",
+                    "type": "string"
+                },
+                "project": {
+                    "description": "The project ID to which the metric belongs.",
+                    "type": "string"
+                },
+                "typeDescriptor": {
+                    "description": "Type description for this metric.",
+                    "properties": {
+                        "metricType": {
+                            "description": "The method of collecting data for the metric. See Metric types.",
+                            "type": "string"
+                        },
+                        "valueType": {
+                            "description": "The data type of of individual points in the metric's time series. See Metric value types.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        }
+    }
+}
